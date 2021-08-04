@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 import { LOGIN } from "../mutations";
-import ErrorModal from "./ErrorModal";
+
 import Auth from "../utils/auth";
 
 const LoginForm = () => {
