@@ -10,9 +10,9 @@ const addUser = async (_, {input}) => {
   if(!user){
   const newUser= await User.addUser({username, email, password})
 
-  if(!newUser) {
-    throw new AuthenticationError("Something is wrong!")
-  }
+  // if(!newUser) {
+  //   throw new AuthenticationError("Something is wrong!")
+  // }
 const token = signToken({
   email: newUser.email,
   id:newUser._id,
