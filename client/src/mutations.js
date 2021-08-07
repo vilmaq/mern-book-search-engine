@@ -34,3 +34,41 @@ export const SIGNUP = gql`
     }
   }
 `;
+
+export const SAVEBOOK = gql`
+  mutation Mutation($saveBookInput: SaveBookInput!) {
+    saveBook(input: $saveBookInput) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;
+
+export const REMOVEBOOK = gql`
+  mutation Mutation($bookId: ID!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;
