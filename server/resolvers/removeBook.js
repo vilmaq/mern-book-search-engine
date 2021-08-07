@@ -1,13 +1,24 @@
 const { AuthenticationError } = require("apollo-server-express");
 
-const { Book } = require("../models");
+const { User } = require("../models");
 
-const removeBook = async (_, { input, context }) => {
+const removeBook = async (_, { input }, context) => {
+  const { bookId } = input;
   if (context.user) {
-    if (user === context.user.id) {
-      const book = await Book.delete({});
+    if (user === context.user._id) {
+      const updatedUser = await User.findByIdAndUpdate(
+        {
+          _id: context.user._id,
+        },
+        {
+          $pull: { savedBooks: { bookId } },
+        },
+        {
+          new: true,
+        }
+      );
 
-      return book;
+      return updatedUser;
     } else {
       throw new AuthenticationError(
         "User not authorised to perform this action."

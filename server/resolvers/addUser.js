@@ -16,7 +16,7 @@ const addUser = async (_, { input }) => {
     const token = signToken({
       email: newUser.email,
       id: newUser._id,
-      username: userName.username,
+      username: newUser.username,
     });
     return { token, user: newUser };
   } else {
