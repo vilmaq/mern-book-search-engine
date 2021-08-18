@@ -1,15 +1,116 @@
 # mern-book-search-engine
 
+## Links
+
+- [Heroku Deployment](https://v-mern-book-search-engine.herokuapp.com/)
+- [Github Repository](https://github.com/vilmaq/mern-book-search-engine)
+
+## Description
+
+The aim of this project is to refactor a fully functioning Google Books API search engine built with a RESTful API, to be a GraphQL API built with Apollo Server.
+
+The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API.
+
+To complete the assignment, the following steps have been followed:
+
+1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
+
+2. Modify the existing authentication middleware so that it works in the context of a GraphQL API.
+
+3. Create an Apollo Provider so that requests can communicate with an Apollo Server.
+
 ## Getting started
 
-install npm i inside client
+- Inside Server Folder run the command:
 
-install npm i inside server
+1. To install the dependencies
+   `install npm i`
+2. To Start the server:
+   `npm run start`
 
-if you want to start your app run
+- Inside Client Folder run the command:
 
-// create new folder resolver with resolvers, prep with arguments
+1. To install the dependencies
+   `install npm i`
+1. To Start the react application:
+   `npm run start`
 
-get singleUserQuery
-change the way it authenticates
-create a payload and set that payload a secret
+## Printscreens
+
+## Mutations Client side
+
+```import { gql } from "@apollo/client";
+
+export const LOGIN = gql`
+  mutation Mutation($loginInput: LoginInput!) {
+    login(input: $loginInput) {
+      token
+      user {
+        _id
+        email
+        username
+      }
+    }
+  }
+`;
+
+export const SIGNUP = gql`
+  mutation Mutation($addUserInput: AddUserInput!) {
+    addUser(input: $addUserInput) {
+      token
+      user {
+        _id
+        username
+        email
+        bookCount
+        savedBooks {
+          bookId
+          authors
+          description
+          title
+          image
+          link
+        }
+      }
+    }
+  }
+`;
+
+export const SAVEBOOK = gql`
+  mutation Mutation($saveBookInput: SaveBookInput!) {
+    saveBook(input: $saveBookInput) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;
+
+export const REMOVEBOOK = gql`
+  mutation Mutation($bookId: ID!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;
+```
