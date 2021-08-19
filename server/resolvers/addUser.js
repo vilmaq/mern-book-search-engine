@@ -23,5 +23,4 @@ const addUser = async (_, { input }) => {
     throw new AuthenticationError("User already exists");
   }
 };
-
 module.exports = addUser;

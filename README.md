@@ -114,3 +114,7 @@ export const REMOVEBOOK = gql`
   }
 `;
 ```
+
+## Queries
+
+[here]()
