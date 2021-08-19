@@ -27,4 +27,4 @@ const removeBook = async (_, { input }, context) => {
   }
 };
 
-module.export = removeBook;
+module.exports = removeBook;

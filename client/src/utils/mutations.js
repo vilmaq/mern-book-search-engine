@@ -6,8 +6,17 @@ export const LOGIN = gql`
       token
       user {
         _id
-        email
         username
+        email
+        bookCount
+        savedBooks {
+          bookId
+          authors
+          description
+          title
+          image
+          link
+        }
       }
     }
   }

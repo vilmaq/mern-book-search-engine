@@ -12,4 +12,4 @@ const getSingleUser = async (_, {}, context) => {
   throw new AuthenticationError("User not logged in");
 };
 
-module.export = getSingleUser;
+module.exports = getSingleUser;

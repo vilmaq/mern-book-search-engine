@@ -1,11 +1,11 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Book } = require("../models");
+const { User } = require("../models");
 
 const saveBook = async (_, { input }, context) => {
   try {
     if (context.user) {
       const { bookId, title, description, image, link } = input;
-      const UpdateUser = await User.findOneAndUpdate(
+      const updatedUser = await User.findOneAndUpdate(
         { _id: context.user.id },
         {
           $push: { savedBooks: { bookId, title, description, image, link } },
@@ -24,4 +24,4 @@ const saveBook = async (_, { input }, context) => {
   }
 };
 
-module.export = saveBook;
+module.exports = saveBook;
